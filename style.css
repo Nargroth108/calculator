@@ -1,0 +1,21 @@
+.container {
+    width: 500px;
+    height: 750px;
+    margin: 50px auto;
+    background-color: rgb(0, 0, 120);
+}
+
+.calculator-display {
+    box-sizing: border-box;
+    background-color: grey;
+    color: white;
+    height: 150px;
+    font-size: 60px;
+    text-align: right;
+    padding: 45px 10px;
+}
+
+.btn-container {
+    display: flex;
+    
+}
