@@ -11,16 +11,16 @@ let secondNumber = null;
 let numNext = true;
 
 function operate(operator, firstNumber, secondNumber) {
-    if(operator === ' + ') {
+    if(operator === '+') {
         firstNumber = add(firstNumber, secondNumber);
         return firstNumber
-    } else if(operator === ' - ') {
+    } else if(operator === '-') {
         firstNumber = subtract(firstNumber, secondNumber);
         return firstNumber
-    } else if(operator === ' * ') {
+    } else if(operator === '*') {
         firstNumber = multiply(firstNumber, secondNumber);
         return firstNumber
-    } else if(operator === ' / ') {
+    } else if(operator === '/') {
         firstNumber = divide(firstNumber, secondNumber);
         return firstNumber
     }
@@ -34,6 +34,7 @@ numBtn.forEach(function(button) {
         document.querySelector('#display').textContent = display;
         if (numNext === true) {
             numNext = false;
+            equalBtn.disabled = false;
             opBtn.forEach((button) => {
                 button.disabled = false;
             });
@@ -48,6 +49,7 @@ opBtn.forEach(function(button) {
         display += text;
         document.querySelector('#display').textContent = display;
         numNext = true;
+        equalBtn.disabled = true;
         opBtn.forEach((button) => {
             button.disabled = true;
         });
@@ -60,6 +62,7 @@ clearBtn.addEventListener('click', () => {
     firstNumber = secondNumber = operator = null;
     document.querySelector('#display').textContent = display;
     numNext = true;
+    equalBtn.disabled = false;
     opBtn.forEach((button) => {
         button.disabled = false;
     });
@@ -67,5 +70,25 @@ clearBtn.addEventListener('click', () => {
 
 const equalBtn = document.querySelector('.E');
 equalBtn.addEventListener('click', () => {
-
+    let arr = display.split(' ');
+                 console.log(arr);
+    let i = arr.length;
+    while (i > 2) {
+        firstNumber = Number(arr[0]);
+        operator = arr[1];
+        secondNumber = Number(arr[2]);
+                    console.log(firstNumber);
+                    console.log(secondNumber);
+                    console.log(operator);
+                    console.log(operate(operator, firstNumber, secondNumber));
+        display = operate(operator, firstNumber, secondNumber);
+        arr.shift();
+        arr.shift();
+        arr.shift();
+                    console.log(arr);
+        arr.unshift(display);
+                    console.log(arr);
+        i = arr.length;
+    };
+    document.querySelector('#display').textContent = display;
 })
