@@ -29,8 +29,7 @@ function operate(operator, firstNumber, secondNumber) {
 const numBtn = document.querySelectorAll('.number');
 numBtn.forEach(function(button) {
     button.addEventListener('click', () => {
-        let text = button.textContent;
-        display += text;
+        display += button.textContent;
         document.querySelector('#display').textContent = display;
         if (numNext === true) {
             numNext = false;
@@ -45,8 +44,7 @@ numBtn.forEach(function(button) {
 const opBtn = document.querySelectorAll('.operation');
 opBtn.forEach(function(button) {
     button.addEventListener('click', () => {
-        let text = button.textContent;
-        display += text;
+        display += button.textContent;
         document.querySelector('#display').textContent = display;
         numNext = true;
         equalBtn.disabled = true;
@@ -71,23 +69,16 @@ clearBtn.addEventListener('click', () => {
 const equalBtn = document.querySelector('.E');
 equalBtn.addEventListener('click', () => {
     let arr = display.split(' ');
-                 console.log(arr);
     let i = arr.length;
     while (i > 2) {
         firstNumber = Number(arr[0]);
         operator = arr[1];
         secondNumber = Number(arr[2]);
-                    console.log(firstNumber);
-                    console.log(secondNumber);
-                    console.log(operator);
-                    console.log(operate(operator, firstNumber, secondNumber));
         display = operate(operator, firstNumber, secondNumber);
         arr.shift();
         arr.shift();
         arr.shift();
-                    console.log(arr);
         arr.unshift(display);
-                    console.log(arr);
         i = arr.length;
     };
     document.querySelector('#display').textContent = display;
